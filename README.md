@@ -498,3 +498,193 @@ var_dump($arrayDeFrase);
 /*
 array(6) { [0]=> string(2) "En" [1]=> string(2) "un" [2]=> string(5) "lugar" [3]=> string(2) "de" [4]=> string(2) "la" [5]=> string(6) "mancha" }
 ~~~
+# +++ ARRAYS +++
+## Array de Numeros Pares
+~~~php
+$Array = array();
+$cont = 0;
+$i = 0;
+while ($cont < 10) {
+    $i++;
+    if ($i%2 == 0) {
+        $cont++;
+        $Array[] = $i;}
+}
+~~~
+## Solo los nombres con M
+~~~php
+$Nombres = array ('roberto','juan','marta','moria','martin','jorge','miriam','nahuel','mirta');
+    $m = 'm';
+    foreach ($Nombres as $NombresS) {
+        if ($NombresS[0] == $m) {
+            $ArrayM[] = $NombresS;
+        }
+    }
+    var_dump($ArrayM);
+    echo('</br>');
+    foreach($ArrayM as $ArrayMs){
+        Print($ArrayMs.', ');
+    }
+~~~
+## Crea un Array de 50
+~~~php
+for ($i=1; $i <= 50; $i++) { 
+        $Num[] = rand(0,100); // con un rand(0,100)
+    }
+~~~
+## Suma los valores del Array y usamos un contador para hacer la media del ARRAY
+~~~php
+for ($i=0; $i < count($Num); $i++) { 
+    $NumSuma += $Num[$i];
+    $Conta++;
+}
+$Media = $NumSuma / $Conta;
+foreach ($Num as $Nums){
+    if ($Nums > $Media) {
+        Print($Nums.' > '.$Media.'</br>');
+~~~
+## Sumar el elemento uno del vector A con el elemento uno del vector B y así sucesivamente y se guarda en el vector C
+~~~php
+$ArrayA = array();
+$ArrayB = array();
+$ArrayC = array();
+for ($i=0; $i < count($ArrayA); $i++) { 
+    $ArrayC[] += ($ArrayA[$i]) + ($ArrayB[$i]);
+}
+~~~
+## Mayor Numero y su Pos
+~~~php
+$Array = array();
+$Mayor = 0;
+$Pos = 0;
+// Crea el Array 20 Elemt, con un rand(0,100)
+for ($i=1; $i <= 20; $i++) { 
+    $Array[] = rand(0,100);
+}
+// Metodo de Ordenacion
+for ($i=0; $i < count($Array); $i++) { 
+    if ($Array[$i] > $Mayor) { //Cuando un Elemt del Array es mayor que la variable $Mayor, el valor sustitue el valor de la variable.
+        $Mayor = $Array[$i];
+        $Pos = $i;
+    }
+}
+~~~
+## Print de Array Tridimencional
+~~~php
+for ($i=0; $i < count($Matriz); $i++) { 
+    for ($o=0; $o < count($Matriz[$i]); $o++) { 
+        print($Matriz[$i][$o].' ');
+    }
+    print('</br>');
+}
+~~~
+## Para sumar en Horizontal
+~~~php
+for ($a=0; $a < count($Matriz); $a++) { 
+        for ($r=0; $r < count($Matriz[$a]); $r++) { 
+            $sum += $Matriz[$a][$r];
+        }
+        $SumaH[$a] = $sum;
+        $sum = 0;
+    }
+~~~
+## Para sumar en Vertical
+~~~php
+for ($a=0; $a < count($Matriz); $a++) { 
+    for ($r=0; $r < count($Matriz[$a]); $r++) { 
+        $sum += $Matriz[$r][$a];
+    }
+    $SumaV[$a] = $sum;
+    $sum = 0;
+}
+~~~
+# Ejer10 de Arrays
+~~~php
+<?php
+    $Matriz = array(); //. Matriz de 10x10
+    $SumaV = array();
+    $SumaH = array();
+    $Array_del_MayorNum = array();
+    $Valor_V_Max = 0;
+    $Valor_H_Max = 0;
+    $ValorMax = 0;
+    $Mayor = 0;
+    $Sum = 0;
+
+//*  Inserta datos al Array con rand(10,99)
+    for ($f=0; $f < 10; $f++) {
+        for ($c=0; $c < 10; $c++) {
+            $Matriz[$f][$c] = rand(10,99);
+        }
+    }
+
+//* Print de Array Tridimencional
+    echo 'Array 10x10: </br>';
+    for ($i=0; $i < count($Matriz); $i++) { 
+        for ($o=0; $o < count($Matriz[$i]); $o++) { 
+            print($Matriz[$i][$o]."\t\t");
+        }
+        print('</br>');
+    }
+
+//? --> el numero mayor almacenado en la matriz:
+    for ($g=0; $g < count($Matriz); $g++) { 
+        for ($b=0; $b < count($Matriz[$g]); $b++) { 
+            if (($Matriz[$g][$b]) >= $ValorMax) {
+                $ValorMax = $Matriz[$g][$b];
+            }
+        }
+    }
+    echo '<br> El numero mayor almacenado en la matriz:'.$ValorMax.'</br>';
+    
+//? --> el numero mayor almacenado en cada fila:
+    for ($i=0; $i < count($Matriz); $i++) { 
+        for ($p=0; $p < count($Matriz[$i]); $p++) { 
+            if ($Matriz[$i][$p] > $Mayor) {
+                $Mayor = $Matriz[$i][$p];
+                $Array_del_MayorNum[$i] = $Mayor;
+            }
+        }
+        $Mayor = 0;
+    }
+    echo '<br> El numero mayor almacenado en cada fila: </br>';
+    foreach ($Array_del_MayorNum as $Array_del_MayorNums) {
+        print('· '.$Array_del_MayorNums.'</br>');
+    }
+
+//? --> la columna con la máxima suma:
+    //. Suma de los Nums en V
+        for ($a=0; $a < count($Matriz); $a++) { 
+            for ($r=0; $r < count($Matriz[$a]); $r++) { 
+                $Sum += $Matriz[$r][$a];
+            }
+            $SumaV[$a] = $Sum;
+            $Sum = 0;
+        }
+    //. Para sacar el valor mas alto de Array con la suma de los Nums en V.
+        for ($b=0; $b < count($SumaV); $b++) { 
+            if ($SumaV[$b] >= $Valor_V_Max) {
+                $Valor_V_Max = $SumaV[$b];
+            }
+        }
+        echo '</br>El valor mas alto es de: ';
+        echo $Valor_V_Max;
+//? --> la fila con la maxima suma.
+    //. Suma de los Nums en H
+        for ($a=0; $a < count($Matriz); $a++) { 
+            for ($r=0; $r < count($Matriz[$a]); $r++) { 
+                $Sum += $Matriz[$a][$r];
+            }
+            $SumaH[$a] = $Sum;
+            $Sum = 0;
+        }
+    //. Para sacar el valor mas alto de Array con la suma de los Nums en H.
+        for ($b=0; $b < count($SumaH); $b++) { 
+            if ($SumaH[$b] >= $Valor_H_Max) {
+                $Valor_H_Max = $SumaH[$b];
+            }
+        }
+        echo '</br>El valor mas alto es de: ';
+        echo $Valor_H_Max;
+?>
+~~~
