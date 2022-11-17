@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="php">PHP</h1>
+<h2 id="manipular-cadenas">Manipular Cadenas</h2>
+<pre class="hljs"><code><div>strlen(<span class="hljs-string">"cadena"</span>); <span class="hljs-comment">//Devuelve la longitud de una cadena.</span>
+str_word_count(<span class="hljs-string">"cadena"</span>); <span class="hljs-comment">// Cuenta palabras en una cadena.</span>
+strrev(<span class="hljs-string">"cadena"</span>); <span class="hljs-comment">// Invierte una cadena.</span>
+strpos(<span class="hljs-string">"cadena en la que buscar"</span>, <span class="hljs-string">"texto a buscar"</span>); <span class="hljs-comment">//Busca un texto dentro de una cadena y devuelve la posición donde empieza.</span>
+str_replace(<span class="hljs-string">"texto antiguo"</span>, <span class="hljs-string">"texto nuevo"</span>, <span class="hljs-string">"cadena en la que buscar"</span>); <span class="hljs-comment">//Reemplaza texto dentro de una cadena .</span>
+</div></code></pre>
+<h2 id="manipular-num">Manipular Num</h2>
+<p>Un alias significa que se comporta igual que.</p>
+<pre class="hljs"><code><div>is_int();
+is_integer(); <span class="hljs-comment">// - alias de is_int()</span>
+is_long(); <span class="hljs-comment">//- alias de is_int()</span>
+is_float();
+is_doble(); <span class="hljs-comment">//- alias de is_float()</span>
+</div></code></pre>
+<h3 id="vardump">var_dump()</h3>
+<pre class="hljs"><code><div>La función var_dump() imprime por pantalla el tipo y el valor de una variable, y podemos utilizarla para obtener información sobre ella. 
+</div></code></pre>
+<h3 id="otros">Otros:</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">echo</span> (pi()); <span class="hljs-comment">// Pi:</span>
+<span class="hljs-comment">// Min y Max</span>
+<span class="hljs-keyword">echo</span>(min(<span class="hljs-number">0</span>, <span class="hljs-number">150</span>, <span class="hljs-number">30</span>, <span class="hljs-number">20</span>, <span class="hljs-number">-8</span>, <span class="hljs-number">-200</span>)); <span class="hljs-comment">// -&gt;&gt; -200</span>
+<span class="hljs-keyword">echo</span>(max(<span class="hljs-number">0</span>, <span class="hljs-number">150</span>, <span class="hljs-number">30</span>, <span class="hljs-number">20</span>, <span class="hljs-number">-8</span>, <span class="hljs-number">-200</span>)); <span class="hljs-comment">// -&gt;&gt; 150</span>
+<span class="hljs-comment">// Raiz cuadrada</span>
+<span class="hljs-keyword">echo</span>(sqrt(<span class="hljs-number">64</span>)); <span class="hljs-comment">// -&gt;&gt; 8</span>
+<span class="hljs-comment">// Redondea conmedio de (0,50)</span>
+<span class="hljs-keyword">echo</span>(round(<span class="hljs-number">2.60</span>)); <span class="hljs-comment">// -&gt;&gt; 3</span>
+<span class="hljs-keyword">echo</span>(round(<span class="hljs-number">1.49</span>)); <span class="hljs-comment">// -&gt;&gt; 1</span>
+<span class="hljs-comment">// Numero aleatorio</span>
+<span class="hljs-keyword">echo</span>(rand()); <span class="hljs-comment">// Num aleatorio sin limitar</span>
+<span class="hljs-keyword">echo</span>(rand(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>)); <span class="hljs-comment">// Num de 1 a 10</span>
+</div></code></pre>
+<h2 id="constante">Constante</h2>
+<pre class="hljs"><code><div><span class="hljs-comment">// Name constante, dato constante.</span>
+define(<span class="hljs-string">"CAPITAL"</span>,<span class="hljs-string">"Madrid"</span>);
+define (<span class="hljs-string">"NUMERO_PAGAS"</span>, <span class="hljs-number">14</span>);
+define (<span class="hljs-string">"MASA_ELECTRON"</span>, <span class="hljs-number">9.109E-31</span>);
+</div></code></pre>
+<h1 id="operadores-y-lectura-de-datos-en-php">Operadores y lectura de datos en PHP</h1>
+<ul>
+<li>El código PHP va dentro de un fichero HTML, y por tanto debe ir escrito dentro de una etiqueta especial que le indique al servidor web que ahí dentro hay código PHP</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>
+            <span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-string">"Hola mundo"</span><span class="hljs-meta">?&gt;</span></span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<h2 id="var">Var:</h2>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+$saludo = <span class="hljs-string">"Mundo"</span>;
+$edad = <span class="hljs-number">9</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"Hola "</span>.$saludo.<span class="hljs-string">" qué tal?"</span>; <span class="hljs-comment">// los Puntos para la Variable</span>
+<span class="hljs-keyword">print</span> <span class="hljs-string">"La variable \$edad contiene el valor:"</span>.$edad;
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<h3 id="php-soporta-los-siguientes-tipos-de-datos">PHP soporta los siguientes tipos de datos:</h3>
+<ol>
+<li>String</li>
+<li>Integer</li>
+<li>Float (números decimales &quot;coma flotante&quot;)</li>
+<li>Boolean</li>
+<li>Array</li>
+<li>Object</li>
+<li>NULL</li>
+<li>Resource</li>
+</ol>
+<h1 id="operadores-en-php">Operadores en PHP</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operador</th>
+<th style="text-align:left">Operación</th>
+<th style="text-align:center">Ejemplo</th>
+<th style="text-align:center">Se evalúa como…</th>
+<th>Observaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">**</td>
+<td style="text-align:left">Exponente (Potencia)</td>
+<td style="text-align:center">2**3</td>
+<td style="text-align:center">8</td>
+<td>Equivale a 23 que equivale a 2*2*2</td>
+</tr>
+<tr>
+<td style="text-align:center">%</td>
+<td style="text-align:left">Módulo (resto de la división entera)</td>
+<td style="text-align:center">22%8</td>
+<td style="text-align:center">1</td>
+<td>22/8 da 2, y de resto da 6</td>
+</tr>
+<tr>
+<td style="text-align:center">/</td>
+<td style="text-align:left">División</td>
+<td style="text-align:center">22/8</td>
+<td style="text-align:center">2,75</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:left">Producto</td>
+<td style="text-align:center">3*5</td>
+<td style="text-align:center">15</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:left">Resta</td>
+<td style="text-align:center">5-2</td>
+<td style="text-align:center">3</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:left">Suma</td>
+<td style="text-align:center">2+ 2</td>
+<td style="text-align:center">4</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="operadores-de-asignaci%C3%B3n">Operadores de asignación</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Asignación</th>
+<th style="text-align:center">Equivale a</th>
+<th style="text-align:left">Explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x = y</td>
+<td style="text-align:center">x = y</td>
+<td style="text-align:left">El operando izquierdo almacena el valor de la expresión de la derecha</td>
+</tr>
+<tr>
+<td style="text-align:center">x += y</td>
+<td style="text-align:center">x = x + y</td>
+<td style="text-align:left">Sumo x e y, y el resultado lo almaceno en x</td>
+</tr>
+<tr>
+<td style="text-align:center">x -= y</td>
+<td style="text-align:center">x = x - y</td>
+<td style="text-align:left">Resto x e y, y el resultado lo almaceno en x</td>
+</tr>
+<tr>
+<td style="text-align:center">x *= y</td>
+<td style="text-align:center">x = x * y</td>
+<td style="text-align:left">Multiplico x e y, y el resultado lo almaceno en x</td>
+</tr>
+<tr>
+<td style="text-align:center">x /= y</td>
+<td style="text-align:center">x = x / y</td>
+<td style="text-align:left">Divido x e y, y el resultado lo almaceno en x</td>
+</tr>
+<tr>
+<td style="text-align:center">x %= y</td>
+<td style="text-align:center">x = x % y</td>
+<td style="text-align:left">Calculo el resto de x/y, y lo almaceno en x</td>
+</tr>
+</tbody>
+</table>
+<h3 id="operadores-de-comparaci%C3%B3n">Operadores de comparación</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operador</th>
+<th>Nombre</th>
+<th>Traducción</th>
+<th style="text-align:center">Ejemplo</th>
+<th style="text-align:left">Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">==</td>
+<td>Equal</td>
+<td>Igual</td>
+<td style="text-align:center">$x == $y</td>
+<td style="text-align:left">Devuelve verdadero si $x es igual a $y</td>
+</tr>
+<tr>
+<td style="text-align:center">===</td>
+<td>Identical</td>
+<td>Idéntico</td>
+<td style="text-align:center">$x === $y</td>
+<td style="text-align:left">Devuelve verdadero si $x es igual a $y, y son del mismo tipo.</td>
+</tr>
+<tr>
+<td style="text-align:center">!= ó &lt;&gt;</td>
+<td>Not equal</td>
+<td>No es igual</td>
+<td style="text-align:center">$x != $y ó $x &lt;&gt; $y</td>
+<td style="text-align:left">Devuelve verdadero si $x no es igual a $y</td>
+</tr>
+<tr>
+<td style="text-align:center">!==</td>
+<td>Not identical</td>
+<td>No es idéntico</td>
+<td style="text-align:center">$x !== $y</td>
+<td style="text-align:left">Devuelve verdadero si $x no es igual a $y, o si no son del mismo tipo</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;</td>
+<td>Greater than</td>
+<td>Más grande que</td>
+<td style="text-align:center">$x &gt; $y</td>
+<td style="text-align:left">Devuelve verdadero si $x es mayor que $y</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;</td>
+<td>Less than</td>
+<td>Menos de</td>
+<td style="text-align:center">$x &lt; $y</td>
+<td style="text-align:left">Devuelve verdadero si $x es menos de $y</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;=</td>
+<td>Greater than equal to</td>
+<td>Mayor o igual que</td>
+<td style="text-align:center">$x &gt;= $y</td>
+<td style="text-align:left">Devuelve verdadero si $x es mayor o igual a $y</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;=</td>
+<td>Less than or equal to</td>
+<td>Menor o igual que</td>
+<td style="text-align:center">$x &lt;= $y</td>
+<td style="text-align:left">Devuelve verdadero si $x es menos o igual a $y1</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;=&gt;</td>
+<td>Spaceship</td>
+<td>Nave espacial</td>
+<td style="text-align:center">$x &lt;=&gt; $y</td>
+<td style="text-align:left">Devuelve -1, 0 ó 1, dependiendo de si $x es menor, igual o mayor que $y. A partir de PHP 7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="el-operador--igual-a-consta-de-dos-caracteres-como-tambi%C3%A9n-lo-hace-el-operador--no-igual-a">El operador == (igual a) consta de dos caracteres, como también lo hace el operador != (no igual a)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operador</th>
+<th>Nombre</th>
+<th>Traducción</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">++$x</td>
+<td>Pre-increment</td>
+<td>Pre-incremento</td>
+<td>Incrementa $x en uno, luego devuelve $x</td>
+</tr>
+<tr>
+<td style="text-align:center">$x++</td>
+<td>Post-increment</td>
+<td>Post-incremento</td>
+<td>Devuelve $x, luego incrementa $x en uno</td>
+</tr>
+<tr>
+<td style="text-align:center">--$x</td>
+<td>Pre-decrement</td>
+<td>Pre-decremento</td>
+<td>Disminuye $x en uno, luego devuelve $x</td>
+</tr>
+<tr>
+<td style="text-align:center">$x--</td>
+<td>Post-decrement</td>
+<td>Post-decremento</td>
+<td>Devuelve $x, luego disminuye $x en uno</td>
+</tr>
+</tbody>
+</table>
+<h2 id="operadores-booleanos">Operadores Booleanos</h2>
+<p>Existen tres operadores Booleanos, que se usan para comparar valores Booleanos, que son <code>and(&amp;&amp;)</code>, <code>or(||)</code>, <code>xor(xor)</code> y <code>not(!)</code>.</p>
+<h3 id="and-o--y">AND o &amp;&amp; (Y)</h3>
+<table>
+<thead>
+<tr>
+<th>Expreción</th>
+<th>Evalua como</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>False <code>&amp;&amp;</code> False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>False <code>&amp;&amp;</code> True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>True <code>&amp;&amp;</code> False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>True <code>&amp;&amp;</code> True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>### OR o</td>
+<td></td>
+</tr>
+<tr>
+<td>Expreción</td>
+<td>Evalua como</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>False <code>\|\|</code> False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>False <code>\|\|</code> True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>True <code>\|\|</code> False</td>
+<td>True</td>
+</tr>
+<tr>
+<td>True <code>\|\|</code> True</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<h3 id="xor-o-exclusiva">XOR (O exclusiva)</h3>
+<table>
+<thead>
+<tr>
+<th>Expreción</th>
+<th>Evalua como</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>False <code>XOR</code> False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>False <code>XOR</code> True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>True <code>XOR</code> False</td>
+<td>True</td>
+</tr>
+<tr>
+<td>True <code>XOR</code> True</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<h3 id="not-no">NOT (NO)</h3>
+<table>
+<thead>
+<tr>
+<th>Expreción</th>
+<th>Evalua como</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>!True</code></td>
+<td>False</td>
+</tr>
+<tr>
+<td><code>!False</code></td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<h3 id="operadores-de-cadenas">Operadores de cadenas</h3>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Nombre</th>
+<th>Traducción</th>
+<th>Ejemplo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>Concatenation</td>
+<td>Concatenación</td>
+<td><code>$txt1 . $txt2</code></td>
+<td>Devuelve el contenido de $txt1 seguido de $txt2</td>
+</tr>
+<tr>
+<td><code>.=</code></td>
+<td>Concatenation assignment</td>
+<td>Asignación de concatenación</td>
+<td><code>$txt1 .= $txt2</code></td>
+<td>Almacena en $txt1 el resultado de concatenar $txt1 y $txt2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lectura-de-datos-desde-teclado-formularios-html">Lectura de datos desde teclado. Formularios HTML</h2>
+<p>Los datos del formulario se envia en metodo POST:<code>methop='POST'</code></p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">'submit.php'</span> <span class="hljs-attr">methop</span>=<span class="hljs-string">'POST'</span>&gt;</span>
+Introduce el valor: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">'Valor'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</div></code></pre>
+<p>Ahora para guardar el valor en una variable en el PHP: <code>$_POST['var']</code></p>
+<pre class="hljs"><code><div>$Valor = $_POST[<span class="hljs-string">'Valor'</span>];
+<span class="hljs-keyword">echo</span> $Valor; <span class="hljs-comment">// Nos sale el valor</span>
+</div></code></pre>
+<h1 id="control-de-flujo-introducci%C3%B3n">Control de flujo Introducción</h1>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR
+    A[Inicio] --> B{Esta lloviendo?}
+    B -->|si| C{Tienes Paraguas?}
+    B -->|NO| P[Sal a la calle?]
+    C -->|SI| P
+    B -->|NO| E[Espera un poco]
+    E --> R[Esta lloviendo?]
+    R -->|SI| E
+    R -->|NO| P
+    P --> y[Fin]
+</div></code></pre>
+<h2 id="if">IF</h2>
+<pre class="hljs"><code><div>$nota = <span class="hljs-number">4</span>;
+<span class="hljs-keyword">if</span> ($nota &lt; <span class="hljs-number">5</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Suspenso! "</span>; <span class="hljs-comment">// Si la condicion es True se ejecuta el codigo.</span>
+}
+</div></code></pre>
+<h2 id="if-else">IF ELSE</h2>
+<pre class="hljs"><code><div>$nota = <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">if</span> ($nota &lt;= <span class="hljs-number">4.99</span>) {
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Suspenso! "</span> ; <span class="hljs-comment">// Si la nota es Menor o igual a 4.99 se ejecuta el CODE.</span>
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Aprobado"</span> ; <span class="hljs-comment">// &lt;-- SI NO SE EJECUTA ESTO.</span>
+    }
+</div></code></pre>
+<h2 id="elseif">ELSEIF</h2>
+<pre class="hljs"><code><div>$hora = <span class="hljs-number">11</span>;
+    <span class="hljs-keyword">if</span> ($hora &lt; <span class="hljs-number">7</span>) { <span class="hljs-comment">// &lt;-- si no se cumple esto pasa al siguente</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"5 minutos más..."</span>;
+    }<span class="hljs-keyword">elseif</span>($hora &lt; <span class="hljs-number">12</span>){ <span class="hljs-comment">// &lt;-- si no se cumple esto pasa al siguente</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Buenos días"</span>;
+    }<span class="hljs-keyword">elseif</span>($hora &lt; <span class="hljs-number">20</span>) { <span class="hljs-comment">// &lt;-- si no se cumple esto pasa al siguente</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Buenas tardes "</span>
+    }<span class="hljs-keyword">else</span>{ <span class="hljs-comment">// &lt;-- Termina con esto por No tener otra Opc</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Buenas noches "</span>;
+    }
+</div></code></pre>
+<h2 id="switch">SWITCH</h2>
+<pre class="hljs"><code><div>$moneda = <span class="hljs-string">"cara"</span>;
+<span class="hljs-keyword">switch</span> ($moneda) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"cara"</span>:
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Ha salido cara"</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Ha salido cruz"</span>
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"no ha salido ni cara ni cruz"</span>;
+}
+</div></code></pre>
+<hr>
+<h1 id="bucles">Bucles</h1>
+<h2 id="while">WHILE</h2>
+<pre class="hljs"><code><div>$contador = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span>($contador &lt;= <span class="hljs-number">5</span>) { <span class="hljs-comment">// Solo va a parar cuando la variable sea &lt;= que 5</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"La variable \$contador vale:$contador &lt;br&gt;"</span>;
+        $contador++;
+    }
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Se ha terminado el bucle"</span>;
+</div></code></pre>
+<h2 id="do--while">DO .. WHILE</h2>
+<pre class="hljs"><code><div>$x = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">do</span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"La variable \$x vale:$x &lt;br&gt;"</span>;
+        $x++;
+    }<span class="hljs-keyword">while</span>($x &lt;= <span class="hljs-number">5</span>)
+</div></code></pre>
+<h2 id="for">FOR</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> ($x = <span class="hljs-number">0</span>;$x &lt;= <span class="hljs-number">10</span>; $x++){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"El contador vale: $x &lt;/br&gt;"</span> ;
+}
+</div></code></pre>
+<h1 id="formularios">Formularios</h1>
+<h2 id="acceso-a-formularios-desde-php">Acceso a formularios desde PHP</h2>
+<pre class="hljs"><code><div><span class="hljs-comment">&lt;!-- Fichero 1.php --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">HTML</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">BODY</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">FORM</span> <span class="hljs-attr">ACTION</span>=<span class="hljs-string">”2.php”</span> <span class="hljs-attr">METHOD</span>=<span class="hljs-string">”POST”</span>&gt;</span>
+        Edad: <span class="hljs-tag">&lt;<span class="hljs-name">INPUT</span> <span class="hljs-attr">TYPE</span>=<span class="hljs-string">”text”</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">”edad”</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">INPUT</span> <span class="hljs-attr">TYPE</span>=<span class="hljs-string">”submit”</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">”aceptar”</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">FORM</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">BODY</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">HTML</span>&gt;</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">// Fichero 2.php</span>
+$edad = $_POST[<span class="hljs-string">'edad'</span>];
+<span class="hljs-keyword">print</span> (“La edad es: $edad”);
+</div></code></pre>
+<h2 id="elementos-de-tipo-input">Elementos de tipo INPUT</h2>
+<h3 id="text">TEXT</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">&lt;!-- HTML --&gt;</span>
+Introduzca la cadena a buscar:
+<span class="hljs-tag">&lt;<span class="hljs-name">INPUT</span> <span class="hljs-attr">TYPE</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">"cadena"</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">"valor por defecto"</span> <span class="hljs-attr">SIZE</span>=<span class="hljs-string">"20"</span>&gt;</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">// PHP</span>
+<span class="hljs-meta">&lt;?PHP</span>
+    $cadena = $_POST[‘cadena’];
+    <span class="hljs-keyword">print</span> ($cadena);
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<h3 id="radio">Radio</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">&lt;!-- HTML --&gt;</span>
+Sexo:
+<span class="hljs-tag">&lt;<span class="hljs-name">INPUT</span> <span class="hljs-attr">TYPE</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">“sexo</span>" <span class="hljs-attr">VALUE</span>=<span class="hljs-string">“M“</span> <span class="hljs-attr">CHECKED</span>&gt;</span>Mujer
+<span class="hljs-tag">&lt;<span class="hljs-name">INPUT</span> <span class="hljs-attr">TYPE</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">“sexo</span>" <span class="hljs-attr">VALUE</span>=<span class="hljs-string">“H</span>"&gt;</span>Hombre
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">// PHP</span>
+<span class="hljs-meta">&lt;?PHP</span>
+    $sexo = $_POST[‘sexo’];
+    <span class="hljs-keyword">print</span> ($sexo);
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<h3 id="checkbox">CHECKBOX</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">&lt;!-- HTML --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">INPUT</span> <span class="hljs-attr">TYPE</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">"extras[]"</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">"garaje"</span> <span class="hljs-attr">CHECKED</span>&gt;</span>Garaje
+<span class="hljs-tag">&lt;<span class="hljs-name">INPUT</span> <span class="hljs-attr">TYPE</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">"extras[]"</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">"piscina"</span>&gt;</span>Piscina
+<span class="hljs-tag">&lt;<span class="hljs-name">INPUT</span> <span class="hljs-attr">TYPE</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">"extras[]"</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">"jardin"</span>&gt;</span>Jardín
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">// PHP</span>
+<span class="hljs-meta">&lt;?PHP</span>
+    $extras = $_POST[‘extras’];
+
+    <span class="hljs-keyword">foreach</span> ($extras <span class="hljs-keyword">as</span> $extra)
+        <span class="hljs-keyword">print</span> (“$extra &lt;BR&gt;\n”);
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<h3 id="button">BUTTON</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">&lt;!-- HTML --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">INPUT</span> <span class="hljs-attr">TYPE</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">“actualizar</span>" <span class="hljs-attr">VALUE</span>=<span class="hljs-string">"Actualizar datos"</span>&gt;</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">// PHP</span>
+<span class="hljs-meta">&lt;?PHP</span>
+    $actualizar = $_POST[‘actualizar’];
+    
+    <span class="hljs-keyword">if</span> ($actualizar)
+        <span class="hljs-keyword">print</span> (<span class="hljs-string">"Se han actualizado los datos"</span>);
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<h3 id="password">PASSWORD</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">&lt;!-- HTML --&gt;</span>
+    Contraseña: <span class="hljs-tag">&lt;<span class="hljs-name">INPUT</span> <span class="hljs-attr">TYPE</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">"clave"</span>&gt;</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">// PHP</span>
+<span class="hljs-meta">&lt;?PHP</span>
+    $clave = $_POST[‘clave’];
+    <span class="hljs-keyword">print</span> ($clave);
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<h3 id="submit">SUBMIT</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">&lt;!-- HTML --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">INPUT</span> <span class="hljs-attr">TYPE</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">"enviar"</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">"Enviar datos"</span>&gt;</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">// PHP</span>
+<span class="hljs-meta">&lt;?PHP</span>
+    $enviar = $_POST[‘enviar’];
+
+    <span class="hljs-keyword">if</span> ($enviar){
+        <span class="hljs-keyword">print</span> (<span class="hljs-string">"Se ha pulsado el botón de enviar"</span>);
+    }
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<h3 id="select-simples">SELECT Simples</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">&lt;!-- HTML --&gt;</span>
+Color:
+<span class="hljs-tag">&lt;<span class="hljs-name">SELECT</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">“color</span>"&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">OPTION</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">“rojo</span>" <span class="hljs-attr">SELECTED</span>&gt;</span>Rojo
+    <span class="hljs-tag">&lt;<span class="hljs-name">OPTION</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">“verde</span>"&gt;</span>Verde
+    <span class="hljs-tag">&lt;<span class="hljs-name">OPTION</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">“azul</span>"&gt;</span>Azul
+<span class="hljs-tag">&lt;/<span class="hljs-name">SELECT</span>&gt;</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">// PHP</span>
+<span class="hljs-meta">&lt;?PHP</span>
+    $color = $_POST[‘color’];
+    <span class="hljs-keyword">print</span> ($color);
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<h3 id="select-m%C3%BAltiple">SELECT Múltiple</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">&lt;!-- HTML --&gt;</span>
+Idiomas:
+<span class="hljs-tag">&lt;<span class="hljs-name">SELECT</span> <span class="hljs-attr">MULTIPLE</span> <span class="hljs-attr">SIZE</span>=<span class="hljs-string">"3"</span> <span class="hljs-attr">NAME</span>=<span class="hljs-string">"idiomas[]"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">OPTION</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">"ingles"</span> <span class="hljs-attr">SELECTED</span>&gt;</span>Inglés
+    <span class="hljs-tag">&lt;<span class="hljs-name">OPTION</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">"frances"</span>&gt;</span>Francés
+    <span class="hljs-tag">&lt;<span class="hljs-name">OPTION</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">"aleman"</span>&gt;</span>Alemán
+    <span class="hljs-tag">&lt;<span class="hljs-name">OPTION</span> <span class="hljs-attr">VALUE</span>=<span class="hljs-string">"holandes"</span>&gt;</span>Holandés
+<span class="hljs-tag">&lt;/<span class="hljs-name">SELECT</span>&gt;</span>
+
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">// PHP</span>
+<span class="hljs-meta">&lt;?PHP</span>
+    $idiomas = $_POST[‘idiomas’];
+
+    <span class="hljs-keyword">foreach</span> ($idiomas <span class="hljs-keyword">as</span> $idioma)
+        <span class="hljs-keyword">print</span> (“$idioma &lt;BR&gt; \n”);
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<h3 id="textarea">TEXTAREA</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">&lt;!-- HTML --&gt;</span>
+Comentario:
+<span class="hljs-tag">&lt;<span class="hljs-name">TEXTAREA</span> <span class="hljs-attr">COLS</span>=<span class="hljs-string">“50</span>" <span class="hljs-attr">ROWS</span>=<span class="hljs-string">“4</span>" <span class="hljs-attr">NAME</span>=<span class="hljs-string">"comentario"</span>&gt;</span>
+    Este libro me parece ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">TEXTAREA</span>&gt;</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">// PHP</span>
+<span class="hljs-meta">&lt;?PHP</span>
+    $comentario = $_REQUEST[‘comentario’];
+    <span class="hljs-keyword">print</span> ($comentario);
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<hr>
+<h2 id="isset">ISSET</h2>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">'enviar'</span>])){ 
+            <span class="hljs-comment">// code</span>
+        }<span class="hljs-keyword">else</span>{
+<span class="hljs-meta">?&gt;</span>
+        <span class="hljs-comment">// code HTML</span>
+<span class="hljs-meta">&lt;?php</span>
+}<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<hr>
+<h1 id="funcion">Funcion</h1>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sumar</span> <span class="hljs-params">($a1, $a2)</span> </span>{
+    <span class="hljs-keyword">return</span> $a1 + $a2;
+}
+    $s = sumar (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>); <span class="hljs-comment">//Se llamam la Funcion y se pasa los valores por parámetro</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"La suma es: $s"</span>;
+</div></code></pre>
+<h1 id="arrays">ARRAYS</h1>
+<pre class="hljs"><code><div>$senana = [ <span class="hljs-comment">// Un array es un mapa ordenado donde los datos tendrán una clave (key) pero muchos valores (values)</span>
+    <span class="hljs-string">'Lunes'</span>,
+    <span class="hljs-string">'Martes'</span>,
+    <span class="hljs-string">'Miércoles'</span>,
+    <span class="hljs-string">'Jueves'</span>,
+    <span class="hljs-string">'Vierne'</span>,
+    <span class="hljs-string">'Sábado  '</span>,
+    <span class="hljs-string">'Domingo'</span>];
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-keyword">echo</span> $semana[<span class="hljs-number">0</span>]; <span class="hljs-comment">// Lunes</span>
+<span class="hljs-keyword">echo</span> $semana[<span class="hljs-number">3</span>]; <span class="hljs-comment">// Jueves</span>
+<span class="hljs-keyword">echo</span> $semana[<span class="hljs-number">6</span>]; <span class="hljs-comment">// Domingo</span>
+var_dump($semana);
+<span class="hljs-comment">/* array(7) {
+    [0]=&gt; string(5) "Lunes"
+    [1]=&gt; string(6) "Martes"
+    [2]=&gt; string(10) "Miércoles"
+    [3]=&gt; string(6) "Jueves"
+    [4]=&gt; string(6) "Vierne"
+    [5]=&gt; string(9) "Sábado "
+    [6]=&gt; string(7) "Domingo"
+    }
+*/</span>
+</div></code></pre>
+<h3 id="crear-arrays">Crear Arrays</h3>
+<pre class="hljs"><code><div>$Planetas = [];
+</div></code></pre>
+<h3 id="a%C3%B1adir">Añadir</h3>
+<pre class="hljs"><code><div>$Planetas = [<span class="hljs-string">'Marte'</span>];
+$Planetas = [<span class="hljs-string">'Tierra'</span>];
+$Planetas = [<span class="hljs-string">'Venus'</span>];
+var_dump($Planetas);
+<span class="hljs-comment">/* se crea Array
+array(3) { [0]=&gt; array(1) { [0]=&gt; string(5) "Marte" } [1]=&gt; array(1) { [0]=&gt; string(6) "Tierra" } [2]=&gt; array(1) { [0]=&gt; string(5) "Venus" } }
+</span></div></code></pre>
+<h3 id="a%C3%B1adimos-mercurio">Añadimos Mercurio</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">// Añadimos 'Mercurio'</span>
+$nuevosPlanetas = array_merge($Planetas, [<span class="hljs-string">'Mercurio'</span>]);
+<span class="hljs-comment">// Vemos el resultado</span>
+var_dump($nuevosPlanetas);
+<span class="hljs-comment">/*
+array(4) { [0]=&gt; array(1) { [0]=&gt; string(5) "Marte" } [1]=&gt; array(1) { [0]=&gt; string(6) "Tierra" } [2]=&gt; array(1) { [0]=&gt; string(5) "Venus" } [3]=&gt; string(8) "Mercurio" }
+</span></div></code></pre>
+<h3 id="count">Count</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">echo</span> count($Planetas); <span class="hljs-comment">// 3</span>
+</div></code></pre>
+<h3 id="borrar">Borrar</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">unset</span>($Planetas[<span class="hljs-number">1</span>]); <span class="hljs-comment">// se borra Tierra</span>
+</div></code></pre>
+<hr>
+<h2 id="los-string-pueden-ser-manipulados-igual-que-un-array">Los string pueden ser manipulados igual que un ARRAY</h2>
+<h3 id="para-sacar-un-caracter">Para sacar un caracter</h3>
+<pre class="hljs"><code><div>$palabra = <span class="hljs-string">'abcdef'</span>;
+<span class="hljs-keyword">echo</span> $palabra[<span class="hljs-number">2</span>]; <span class="hljs-comment">// c</span>
+</div></code></pre>
+<h3 id="para-cambiar-un-caracter">Para cambiar un caracter</h3>
+<pre class="hljs"><code><div>$palabra = <span class="hljs-string">'abcdef'</span> ;
+$pa1abra[<span class="hljs-number">2</span>] = <span class="hljs-string">'Z'</span>;
+<span class="hljs-keyword">echo</span> $palabra; <span class="hljs-comment">// abZdef</span>
+</div></code></pre>
+<hr>
+<h2 id="convertir-un-string-en-un-array-pregsplit">Convertir un String en un Array <code>preg_split</code></h2>
+<pre class="hljs"><code><div>$frase = <span class="hljs-string">'En un lugar de la mancha'</span>;
+$arrayDeFrase = preg_split(<span class="hljs-string">'/[\s,]+/'</span>,$frase);
+<span class="hljs-keyword">echo</span> $arrayDeFrase[<span class="hljs-number">2</span>]; <span class="hljs-comment">// "Lugar "</span>
+var_dump($arrayDeFrase);
+<span class="hljs-comment">/*
+array(6) { [0]=&gt; string(2) "En" [1]=&gt; string(2) "un" [2]=&gt; string(5) "lugar" [3]=&gt; string(2) "de" [4]=&gt; string(2) "la" [5]=&gt; string(6) "mancha" }
+</span></div></code></pre>
+<h1 id="arrays">+++ ARRAYS +++</h1>
+<h2 id="array-de-numeros-pares">Array de Numeros Pares</h2>
+<pre class="hljs"><code><div>$Array = <span class="hljs-keyword">array</span>();
+$cont = <span class="hljs-number">0</span>;
+$i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> ($cont &lt; <span class="hljs-number">10</span>) {
+    $i++;
+    <span class="hljs-keyword">if</span> ($i%<span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+        $cont++;
+        $Array[] = $i;}
+}
+</div></code></pre>
+<h2 id="solo-los-nombres-con-m">Solo los nombres con M</h2>
+<pre class="hljs"><code><div>$Nombres = <span class="hljs-keyword">array</span> (<span class="hljs-string">'roberto'</span>,<span class="hljs-string">'juan'</span>,<span class="hljs-string">'marta'</span>,<span class="hljs-string">'moria'</span>,<span class="hljs-string">'martin'</span>,<span class="hljs-string">'jorge'</span>,<span class="hljs-string">'miriam'</span>,<span class="hljs-string">'nahuel'</span>,<span class="hljs-string">'mirta'</span>);
+    $m = <span class="hljs-string">'m'</span>;
+    <span class="hljs-keyword">foreach</span> ($Nombres <span class="hljs-keyword">as</span> $NombresS) {
+        <span class="hljs-keyword">if</span> ($NombresS[<span class="hljs-number">0</span>] == $m) {
+            $ArrayM[] = $NombresS;
+        }
+    }
+    var_dump($ArrayM);
+    <span class="hljs-keyword">echo</span>(<span class="hljs-string">'&lt;/br&gt;'</span>);
+    <span class="hljs-keyword">foreach</span>($ArrayM <span class="hljs-keyword">as</span> $ArrayMs){
+        <span class="hljs-keyword">Print</span>($ArrayMs.<span class="hljs-string">', '</span>);
+    }
+</div></code></pre>
+<h2 id="crea-un-array-de-50">Crea un Array de 50</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> ($i=<span class="hljs-number">1</span>; $i &lt;= <span class="hljs-number">50</span>; $i++) { 
+        $Num[] = rand(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>); <span class="hljs-comment">// con un rand(0,100)</span>
+    }
+</div></code></pre>
+<h2 id="suma-los-valores-del-array-y-usamos-un-contador-para-hacer-la-media-del-array">Suma los valores del Array y usamos un contador para hacer la media del ARRAY</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i &lt; count($Num); $i++) { 
+    $NumSuma += $Num[$i];
+    $Conta++;
+}
+$Media = $NumSuma / $Conta;
+<span class="hljs-keyword">foreach</span> ($Num <span class="hljs-keyword">as</span> $Nums){
+    <span class="hljs-keyword">if</span> ($Nums &gt; $Media) {
+        <span class="hljs-keyword">Print</span>($Nums.<span class="hljs-string">' &gt; '</span>.$Media.<span class="hljs-string">'&lt;/br&gt;'</span>);
+</div></code></pre>
+<h2 id="sumar-el-elemento-uno-del-vector-a-con-el-elemento-uno-del-vector-b-y-as%C3%AD-sucesivamente-y-se-guarda-en-el-vector-c">Sumar el elemento uno del vector A con el elemento uno del vector B y así sucesivamente y se guarda en el vector C</h2>
+<pre class="hljs"><code><div>$ArrayA = <span class="hljs-keyword">array</span>();
+$ArrayB = <span class="hljs-keyword">array</span>();
+$ArrayC = <span class="hljs-keyword">array</span>();
+<span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i &lt; count($ArrayA); $i++) { 
+    $ArrayC[] += ($ArrayA[$i]) + ($ArrayB[$i]);
+}
+</div></code></pre>
+<h2 id="mayor-numero-y-su-pos">Mayor Numero y su Pos</h2>
+<pre class="hljs"><code><div>$Array = <span class="hljs-keyword">array</span>();
+$Mayor = <span class="hljs-number">0</span>;
+$Pos = <span class="hljs-number">0</span>;
+<span class="hljs-comment">// Crea el Array 20 Elemt, con un rand(0,100)</span>
+<span class="hljs-keyword">for</span> ($i=<span class="hljs-number">1</span>; $i &lt;= <span class="hljs-number">20</span>; $i++) { 
+    $Array[] = rand(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>);
+}
+<span class="hljs-comment">// Metodo de Ordenacion</span>
+<span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i &lt; count($Array); $i++) { 
+    <span class="hljs-keyword">if</span> ($Array[$i] &gt; $Mayor) { <span class="hljs-comment">//Cuando un Elemt del Array es mayor que la variable $Mayor, el valor sustitue el valor de la variable.</span>
+        $Mayor = $Array[$i];
+        $Pos = $i;
+    }
+}
+</div></code></pre>
+<h2 id="print-de-array-tridimencional">Print de Array Tridimencional</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i &lt; count($Matriz); $i++) { 
+    <span class="hljs-keyword">for</span> ($o=<span class="hljs-number">0</span>; $o &lt; count($Matriz[$i]); $o++) { 
+        <span class="hljs-keyword">print</span>($Matriz[$i][$o].<span class="hljs-string">' '</span>);
+    }
+    <span class="hljs-keyword">print</span>(<span class="hljs-string">'&lt;/br&gt;'</span>);
+}
+</div></code></pre>
+<h2 id="para-sumar-en-horizontal">Para sumar en Horizontal</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> ($a=<span class="hljs-number">0</span>; $a &lt; count($Matriz); $a++) { 
+        <span class="hljs-keyword">for</span> ($r=<span class="hljs-number">0</span>; $r &lt; count($Matriz[$a]); $r++) { 
+            $sum += $Matriz[$a][$r];
+        }
+        $SumaH[$a] = $sum;
+        $sum = <span class="hljs-number">0</span>;
+    }
+</div></code></pre>
+<h2 id="para-sumar-en-vertical">Para sumar en Vertical</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> ($a=<span class="hljs-number">0</span>; $a &lt; count($Matriz); $a++) { 
+    <span class="hljs-keyword">for</span> ($r=<span class="hljs-number">0</span>; $r &lt; count($Matriz[$a]); $r++) { 
+        $sum += $Matriz[$r][$a];
+    }
+    $SumaV[$a] = $sum;
+    $sum = <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h1 id="ejer10-de-arrays">Ejer10 de Arrays</h1>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+    $Matriz = <span class="hljs-keyword">array</span>(); <span class="hljs-comment">//. Matriz de 10x10</span>
+    $SumaV = <span class="hljs-keyword">array</span>();
+    $SumaH = <span class="hljs-keyword">array</span>();
+    $Array_del_MayorNum = <span class="hljs-keyword">array</span>();
+    $Valor_V_Max = <span class="hljs-number">0</span>;
+    $Valor_H_Max = <span class="hljs-number">0</span>;
+    $ValorMax = <span class="hljs-number">0</span>;
+    $Mayor = <span class="hljs-number">0</span>;
+    $Sum = <span class="hljs-number">0</span>;
+
+<span class="hljs-comment">//*  Inserta datos al Array con rand(10,99)</span>
+    <span class="hljs-keyword">for</span> ($f=<span class="hljs-number">0</span>; $f &lt; <span class="hljs-number">10</span>; $f++) {
+        <span class="hljs-keyword">for</span> ($c=<span class="hljs-number">0</span>; $c &lt; <span class="hljs-number">10</span>; $c++) {
+            $Matriz[$f][$c] = rand(<span class="hljs-number">10</span>,<span class="hljs-number">99</span>);
+        }
+    }
+
+<span class="hljs-comment">//* Print de Array Tridimencional</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Array 10x10: &lt;/br&gt;'</span>;
+    <span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i &lt; count($Matriz); $i++) { 
+        <span class="hljs-keyword">for</span> ($o=<span class="hljs-number">0</span>; $o &lt; count($Matriz[$i]); $o++) { 
+            <span class="hljs-keyword">print</span>($Matriz[$i][$o].<span class="hljs-string">"\t\t"</span>);
+        }
+        <span class="hljs-keyword">print</span>(<span class="hljs-string">'&lt;/br&gt;'</span>);
+    }
+
+<span class="hljs-comment">//? --&gt; el numero mayor almacenado en la matriz:</span>
+    <span class="hljs-keyword">for</span> ($g=<span class="hljs-number">0</span>; $g &lt; count($Matriz); $g++) { 
+        <span class="hljs-keyword">for</span> ($b=<span class="hljs-number">0</span>; $b &lt; count($Matriz[$g]); $b++) { 
+            <span class="hljs-keyword">if</span> (($Matriz[$g][$b]) &gt;= $ValorMax) {
+                $ValorMax = $Matriz[$g][$b];
+            }
+        }
+    }
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt; El numero mayor almacenado en la matriz:'</span>.$ValorMax.<span class="hljs-string">'&lt;/br&gt;'</span>;
+    
+<span class="hljs-comment">//? --&gt; el numero mayor almacenado en cada fila:</span>
+    <span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i &lt; count($Matriz); $i++) { 
+        <span class="hljs-keyword">for</span> ($p=<span class="hljs-number">0</span>; $p &lt; count($Matriz[$i]); $p++) { 
+            <span class="hljs-keyword">if</span> ($Matriz[$i][$p] &gt; $Mayor) {
+                $Mayor = $Matriz[$i][$p];
+                $Array_del_MayorNum[$i] = $Mayor;
+            }
+        }
+        $Mayor = <span class="hljs-number">0</span>;
+    }
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt; El numero mayor almacenado en cada fila: &lt;/br&gt;'</span>;
+    <span class="hljs-keyword">foreach</span> ($Array_del_MayorNum <span class="hljs-keyword">as</span> $Array_del_MayorNums) {
+        <span class="hljs-keyword">print</span>(<span class="hljs-string">'· '</span>.$Array_del_MayorNums.<span class="hljs-string">'&lt;/br&gt;'</span>);
+    }
+
+<span class="hljs-comment">//? --&gt; la columna con la máxima suma:</span>
+    <span class="hljs-comment">//. Suma de los Nums en V</span>
+        <span class="hljs-keyword">for</span> ($a=<span class="hljs-number">0</span>; $a &lt; count($Matriz); $a++) { 
+            <span class="hljs-keyword">for</span> ($r=<span class="hljs-number">0</span>; $r &lt; count($Matriz[$a]); $r++) { 
+                $Sum += $Matriz[$r][$a];
+            }
+            $SumaV[$a] = $Sum;
+            $Sum = <span class="hljs-number">0</span>;
+        }
+    <span class="hljs-comment">//. Para sacar el valor mas alto de Array con la suma de los Nums en V.</span>
+        <span class="hljs-keyword">for</span> ($b=<span class="hljs-number">0</span>; $b &lt; count($SumaV); $b++) { 
+            <span class="hljs-keyword">if</span> ($SumaV[$b] &gt;= $Valor_V_Max) {
+                $Valor_V_Max = $SumaV[$b];
+            }
+        }
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;/br&gt;El valor mas alto es de: '</span>;
+        <span class="hljs-keyword">echo</span> $Valor_V_Max;
+<span class="hljs-comment">//? --&gt; la fila con la maxima suma.</span>
+    <span class="hljs-comment">//. Suma de los Nums en H</span>
+        <span class="hljs-keyword">for</span> ($a=<span class="hljs-number">0</span>; $a &lt; count($Matriz); $a++) { 
+            <span class="hljs-keyword">for</span> ($r=<span class="hljs-number">0</span>; $r &lt; count($Matriz[$a]); $r++) { 
+                $Sum += $Matriz[$a][$r];
+            }
+            $SumaH[$a] = $Sum;
+            $Sum = <span class="hljs-number">0</span>;
+        }
+    <span class="hljs-comment">//. Para sacar el valor mas alto de Array con la suma de los Nums en H.</span>
+        <span class="hljs-keyword">for</span> ($b=<span class="hljs-number">0</span>; $b &lt; count($SumaH); $b++) { 
+            <span class="hljs-keyword">if</span> ($SumaH[$b] &gt;= $Valor_H_Max) {
+                $Valor_H_Max = $SumaH[$b];
+            }
+        }
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;/br&gt;El valor mas alto es de: '</span>;
+        <span class="hljs-keyword">echo</span> $Valor_H_Max;
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+
+</body>
+</html>
