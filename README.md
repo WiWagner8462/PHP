@@ -419,3 +419,82 @@ function sumar ($a1, $a2) {
     echo "La suma es: $s";
 ~~~
 # ARRAYS
+~~~php
+$senana = [ // Un array es un mapa ordenado donde los datos tendrán una clave (key) pero muchos valores (values)
+    'Lunes',
+    'Martes',
+    'Miércoles',
+    'Jueves',
+    'Vierne',
+    'Sábado  ',
+    'Domingo'];
+~~~
+~~~php
+echo $semana[0]; // Lunes
+echo $semana[3]; // Jueves
+echo $semana[6]; // Domingo
+var_dump($semana);
+/* array(7) {
+    [0]=> string(5) "Lunes"
+    [1]=> string(6) "Martes"
+    [2]=> string(10) "Miércoles"
+    [3]=> string(6) "Jueves"
+    [4]=> string(6) "Vierne"
+    [5]=> string(9) "Sábado "
+    [6]=> string(7) "Domingo"
+    }
+*/
+~~~
+### Crear Arrays
+~~~php
+$Planetas = [];
+~~~
+### Añadir
+~~~php
+$Planetas = ['Marte'];
+$Planetas = ['Tierra'];
+$Planetas = ['Venus'];
+var_dump($Planetas);
+/* se crea Array
+array(3) { [0]=> array(1) { [0]=> string(5) "Marte" } [1]=> array(1) { [0]=> string(6) "Tierra" } [2]=> array(1) { [0]=> string(5) "Venus" } }
+~~~
+### Añadimos Mercurio
+~~~php
+// Añadimos 'Mercurio'
+$nuevosPlanetas = array_merge($Planetas, ['Mercurio']);
+// Vemos el resultado
+var_dump($nuevosPlanetas);
+/*
+array(4) { [0]=> array(1) { [0]=> string(5) "Marte" } [1]=> array(1) { [0]=> string(6) "Tierra" } [2]=> array(1) { [0]=> string(5) "Venus" } [3]=> string(8) "Mercurio" }
+~~~
+### Count
+~~~php
+echo count($Planetas); // 3
+~~~
+### Borrar
+~~~php
+unset($Planetas[1]); // se borra Tierra
+~~~
+***
+## Los string pueden ser manipulados igual que un ARRAY
+### Para sacar un caracter
+~~~php
+$palabra = 'abcdef';
+echo $palabra[2]; // c
+~~~
+### Para cambiar un caracter
+~~~php
+$palabra = 'abcdef' ;
+$pa1abra[2] = 'Z';
+echo $palabra; // abZdef
+~~~
+***
+## Convertir un String en un Array `preg_split`
+~~~php
+$frase = 'En un lugar de la mancha';
+$arrayDeFrase = preg_split('/[\s,]+/',$frase);
+echo $arrayDeFrase[2]; // "Lugar "
+var_dump($arrayDeFrase);
+/*
+array(6) { [0]=> string(2) "En" [1]=> string(2) "un" [2]=> string(5) "lugar" [3]=> string(2) "de" [4]=> string(2) "la" [5]=> string(6) "mancha" }
+~~~
