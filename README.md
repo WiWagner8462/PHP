@@ -167,7 +167,7 @@ graph LR
     B -->|si| C{Tienes Paraguas?}
     B -->|NO| P[Sal a la calle?]
     C -->|SI| P
-    B -->|NO| E[Espera un poco]
+    B -->|SI| E[Espera un poco]
     E --> R[Esta lloviendo?]
     R -->|SI| E
     R -->|NO| P
